@@ -54,7 +54,7 @@ $hotels = [
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Hotel</title>
+    <title>Arlong Park</title>
     <link rel="stylesheet" href="./css/style.css">
     <link rel="shortcut icon" href="./img/flag.png" type="image/x-icon">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css" integrity="sha512-xh6O/CkQoPOWDdYTDqeRdPCVd1SpvCA9XXcUnZS2FmJNp1coAFzvtCN9BmamE+4aHK8yyUHUSCcJHgXloTyT2A==" crossorigin="anonymous" referrerpolicy="no-referrer" />
@@ -84,45 +84,65 @@ $hotels = [
 
         <div class="container">
 
-        <form action=""  class="py-3">
+            <form class="d-flex align-items-center" action="" method="GET">
 
-            <select class="form-select w-25 py-2 my-3" aria-label="Default select example">
-                <option selected>Parcheggio Nave</option>
-                <option value="1">Se si... è nostra</option>
-                <option value="2">Se no... sei nostro</option>
-                <option value="3">Se no ci prendiamo entrambi</option>
-            </select>
+                <select name="parking" class="form-select w-25 me-4 my-3" aria-label="Default select example">
+                    <option value="null" hidden selected>Parcheggio Nave</option>
+                    <option value="1">SI... è nostra</option>
+                    <option value="0">NO... sei nostro</option>
+                    <option value="null">INDIFFERENTE... ci prendiamo entrambi</option>
+                </select>
 
-            <button type="submit" class="btn btn-success"> <img class="btn-arlong pe-2" src="./img/flag.png" alt="">Offerta</button>
-            
-        </form>
+                <select name="vote" class="form-select w-25 mx-3" aria-label="Default select example">
+                    <option value='null' hidden selected>Voto Location</option>
+                    <option value="null">🦈🦈🦈🦈🦈🦈</option>
+                    <option value="1">🦈</option>
+                    <option value="2">🦈🦈</option>
+                    <option value="3">🦈🦈🦈</option>
+                    <option value="4">🦈🦈🦈🦈</option>
+                    <option value="5">🦈🦈🦈🦈🦈</option>
+                </select>
+
+                <button type="submit" class="btn btn-success"><img class="btn-arlong pe-2" src="./img/flag.png" alt="">Offerta</button>
+
+            </form>
             <table class="table">
                 <thead>
-                    <tr>
-                        <th scope="col">#</th>
-                        <th scope="col">First</th>
-                        <th scope="col">Last</th>
-                        <th scope="col">Handle</th>
+                    <tr class="">
+                        <th scope="col">Name</th>
+                        <th scope="col">Description</th>
+                        <th scope="col">Parking</th>
+                        <th scope="col">Vote</th>
+                        <th scope="col">Distance to Center</th>
                     </tr>
                 </thead>
                 <tbody>
-                    <tr>
-                        <th scope="row">1</th>
-                        <td>Mark</td>
-                        <td>Otto</td>
-                        <td>@mdo</td>
-                    </tr>
-                    <tr>
-                        <th scope="row">2</th>
-                        <td>Jacob</td>
-                        <td>Thornton</td>
-                        <td>@fat</td>
-                    </tr>
-                    <tr>
-                        <th scope="row">3</th>
-                        <td colspan="2">Larry the Bird</td>
-                        <td>@twitter</td>
-                    </tr>
+
+                    <?php foreach ($hotels as $hotel) {
+
+                        if (
+
+                            !$_GET
+                            || $hotel['parking'] == $_GET['parking'] && $hotel['vote'] >= $_GET['vote']
+                            || $hotel['parking'] == $_GET['parking'] && $_GET['vote'] == 'null'
+                            || $_GET['parking'] == 'null' && $hotel['vote'] >= $_GET['vote']
+                            || $_GET['vote'] == 'null' && $_GET['parking'] == 'null'
+                        ) {
+
+                    ?>
+                            <tr>
+                                <th scope="row"><?php echo $hotel['name'] ?></th>
+                                <td><?php echo $hotel['description'] ?></td>
+                                <td><?php echo $hotel['parking'] ? 'Si' : 'No' ?></td>
+                                <td><?php echo $hotel['vote'] ?></td>
+                                <td><?php echo $hotel['distance_to_center'] ?></td>
+
+                            </tr>
+                    <?php
+                        }
+                    }
+
+                    ?>
                 </tbody>
             </table>
 
@@ -130,7 +150,7 @@ $hotels = [
     </main>
 
 
-
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-HwwvtgBNo3bZJJLYd8oVXjrBZt8cqVSpeBNS5n7C8IVInixGAoxmnlMuBnhbgrkm" crossorigin="anonymous"></script>
 </body>
 
 </html>

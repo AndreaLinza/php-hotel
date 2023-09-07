@@ -1,5 +1,6 @@
 body{
     background-image: url('../img/Arlong_Park.webp');
+    backdrop-filter: sepia(50%);
     background-repeat: no-repeat;
     background-size: cover;
     height: 100vh;
@@ -24,9 +25,17 @@ header img{
     transform: translateY(-50%);
 }
 
+form button{
+    height: 100%;
+}
+
 
 .btn-arlong{
     width: 30px;
+}
+
+.icon-vote{
+    width: 10px;
 }
 
 .table {
@@ -48,4 +57,12 @@ header img{
     margin-bottom: 1rem;
     vertical-align: top;
     border-color: var(--bs-table-border-color);
+}
+
+.table>:not(caption)>*>* {
+    padding: 0.5rem 0.8rem !important;
+    color: var(--bs-table-color-state,var(--bs-table-color-type,var(--bs-table-color)));
+    background-color: var(--bs-table-bg);
+    border-bottom-width: var(--bs-border-width);
+    box-shadow: inset 0 0 0 9999px var(--bs-table-bg-state,var(--bs-table-bg-type,var(--bs-table-accent-bg)));
 }
