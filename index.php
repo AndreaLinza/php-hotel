@@ -87,13 +87,13 @@ $hotels = [
         <form action=""  class="py-3">
 
             <select class="form-select w-25 py-2 my-3" aria-label="Default select example">
-                <option selected>Open this select menu</option>
-                <option value="1">One</option>
-                <option value="2">Two</option>
-                <option value="3">Three</option>
+                <option selected>Parcheggio Nave</option>
+                <option value="1">Se si... è nostra</option>
+                <option value="2">Se no... sei nostro</option>
+                <option value="3">Se no ci prendiamo entrambi</option>
             </select>
 
-            <button type="submit" class="btn btn-success"> <img class="btn-arlong pe-2" src="./img/flag.png" alt="">Parcheggio Nave</button>
+            <button type="submit" class="btn btn-success"> <img class="btn-arlong pe-2" src="./img/flag.png" alt="">Offerta</button>
             
         </form>
             <table class="table">
